@@ -1,2 +1,7 @@
 # tictactoetest
-jeu morpion ex dev
+
+Un jeu en langage python
+developper comme exemple de coding
+
+
+version 0.1 , lucas , fred
