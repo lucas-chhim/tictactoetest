@@ -12,23 +12,23 @@ the point there being to clean up the terminal everytime we are gonna run the ga
 """
 
 
-# with the following commands we are creating the game board , dimension are cases of 3x3 so 9
+# with the following commands we are creating the game board , dimension are cases of 3x3 so 9 
 
 def afficher_plateau(plateau_de_jeu):
     for ligne in plateau_de_jeu:
-        print(" | ".join(ligne))
-        print("-" * 9)
-       
+        print( " | ".join(ligne))
+        print("-" * 9) 
+        
 """"
 
-here , we gonna define the game board , it's made of | and columns and rows
-to do so we are using '-' , 9 x "-" , because we need 3 cases x 3 caracteres per lines
+here , we gonna define the game board , its made of | and columns and rows
+to do so we are using '-' , 9 x "-" , because its 3 cases x 3 carachters per lines 
 
 
 """
 
 
-def verifier_victoire(plateau_de_jeu, joueur):
+def VERIFIER_VICTOIRE(plateau_de_jeu, joueur):
     for ligne in plateau_de_jeu:
         if all(s == joueur for s in ligne):
             return True
@@ -39,19 +39,16 @@ def verifier_victoire(plateau_de_jeu, joueur):
         return True
     return False
 
-def partie_tic_tac_toe():
+def PARTIE_TIC_TAC_TOE():
     plateau = [[" " for _ in range(3)] for _ in range(3)]
-    joueurs = ["X", "O"]
-    tour = 0
+    joueurs = ["X", "O"]                                                    # here we define 2 plahyers and their moves
+    tour = 0                                                            # we start the game here , 9 round maximum, this is round 1
 
-    """
-    with this def we are setting up players move X & O , its what gonna be on screen
    
-    """
 
 
 
-    while tour < 9:
+    while tour < 9:                                # check tour , if its under 9 
         joueur = joueurs[tour % 2]
         afficher_plateau(plateau)
        
@@ -67,15 +64,15 @@ def partie_tic_tac_toe():
             except (ValueError, IndexError):
                 print("Entry is not valid, please choose between 0,1,2")
 
-        if verifier_victoire(plateau, joueur):
+        if VERIFIER_VICTOIRE(plateau, joueur):
             afficher_plateau(plateau)
             print(f"CONGRATULATIONS ! Player {joueur} win!")
             return
 
-        tour += 1
+        tour += 1                                                       # here we do add +1 to the round
 
     afficher_plateau(plateau)
     print("No One wins, Its a draw !")
 
 if __name__ == "__main__":
-    partie_tic_tac_toe()
+    PARTIE_TIC_TAC_TOE()
