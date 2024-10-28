@@ -7,7 +7,7 @@ import os
 os.system('cls')
 
 """
-The purpose here is to clear the terminal each time we run the game.
+the purpose here is to clear the terminal each time we run the game.
 """
 
 # the following commands create the game board, which is a 3x3 grid, so 9 cells in total.
@@ -19,7 +19,7 @@ def afficher_plateau(plateau_de_jeu):
         
 """
 here, we define the game board, made up of columns and rows using '|'.
-To separate rows, we use '-' repeated 9 times, as each row has 3 cells with 3 characters per line.
+to separate rows, we use '-' repeated 9 times, as each row has 3 cells with 3 characters per line.
 """
 
 def VERIFIER_VICTOIRE(plateau_de_jeu, joueur):
@@ -40,7 +40,7 @@ def PARTIE_TIC_TAC_TOE():
     joueurs = ["X", "O"]  # define two players and their symbols
     tour = 0  # start the game, with a maximum of 9 rounds; this is incremented by +1 each round
 
-    while tour < 9:  # Round check
+    while tour < 9:  # round check
         joueur = joueurs[tour % 2]
         afficher_plateau(plateau)  # draw the game board
        
