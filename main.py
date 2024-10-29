@@ -1,32 +1,26 @@
-# 29/10
+# 23/10
 
-#  tic tac toe , version 0.1b, lucas & fred
+# tic tac toe, version 0.1, lucas & fred et arthur
 
 import os
  
-os.system('cls') # cls= clear screen , upon linux operating system, its another command named : clear
-
-""""
-the point there being to clean up the terminal everytime we are gonna run the game
+os.system('cls')
 
 """
+the purpose here is to clear the terminal each time we run the game.
+"""
 
-
-# with the following commands we are creating the game board , dimension are cases of 3x3 so 9 
+# the following commands create the game board, which is a 3x3 grid, so 9 cells in total.
 
 def afficher_plateau(plateau_de_jeu):
     for ligne in plateau_de_jeu:
-        print( " | ".join(ligne))
+        print(" | ".join(ligne))
         print("-" * 9) 
         
-""""
-
-here , we gonna define the game board , its made of | and columns and rows
-to do so we are using '-' , 9 x "-" , because its 3 cases x 3 carachters per lines 
-
-
 """
-
+here, we define the game board, made up of columns and rows using '|'.
+to separate rows, we use '-' repeated 9 times, as each row has 3 cells with 3 characters per line.
+"""
 
 def VERIFIER_VICTOIRE(plateau_de_jeu, joueur):
     for ligne in plateau_de_jeu:
@@ -39,45 +33,38 @@ def VERIFIER_VICTOIRE(plateau_de_jeu, joueur):
         return True
     return False
 
-# commands above are players victory checks
-
-
-
+# the commands above check for a player's victory.
 
 def PARTIE_TIC_TAC_TOE():
     plateau = [[" " for _ in range(3)] for _ in range(3)]
-    joueurs = ["X", "O"]                                                    # here we define 2 plahyers and their moves
-    tour = 0                                                            # we start the game here , 9 round maximum, this is an incrementation of + 1 per round
+    joueurs = ["X", "O"]  # define two players and their symbols
+    tour = 0  # start the game, with a maximum of 9 rounds; this is incremented by +1 each round
 
-   
-
-
-
-    while tour < 9:    # tour checks
+    while tour < 9:  # round check
         joueur = joueurs[tour % 2]
-        afficher_plateau(plateau) # game board drawing
+        afficher_plateau(plateau)  # draw the game board
        
         while True:
             try:
-                ligne = int(input(f"Player {joueur}, enter the line number (0, 1, 2) : ")) # player input line 
-                col = int(input(f"Player {joueur}, enter the row number (0, 1, 2) : "))  # player input row, columns
+                ligne = int(input(f"Player {joueur}, enter the line number (0, 1, 2): "))  # player inputs line
+                col = int(input(f"Player {joueur}, enter the column number (0, 1, 2): "))  # player inputs column
                 if plateau[ligne][col] == " ":
                     plateau[ligne][col] = joueur
                     break
                 else:
-                    print("This case is already taken, please try again")  # error message when a case is already took
+                    print("This cell is already taken, please try again")  # error message if cell is taken
             except (ValueError, IndexError):
-                print("Entry is not valid, please choose between 0,1,2") # error message when a case numnber is not in the range 0 1 2
+                print("Invalid entry, please choose between 0, 1, and 2")  # error if input is out of range
 
         if VERIFIER_VICTOIRE(plateau, joueur):
             afficher_plateau(plateau)
-            print(f"CONGRATULATIONS ! Player {joueur} win!") # victory message
+            print(f"CONGRATULATIONS! Player {joueur} wins!")  # victory message
             return
 
-        tour += 1                                                       # here we do add +1 to the round
+        tour += 1  # increment round
 
     afficher_plateau(plateau)
-    print("No One wins, Its a draw !") # this message is on display when its a draw 
+    print("It's a draw!")  # message displayed in case of a draw
 
-if __name__ == "__main__": #main
+if __name__ == "__main__":  # main
     PARTIE_TIC_TAC_TOE()
